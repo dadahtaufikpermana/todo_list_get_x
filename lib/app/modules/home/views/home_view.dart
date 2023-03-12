@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
-import '../../../data/models/task.dart';
 import '../../../widgets/add_card.dart';
 import '../../../widgets/task_card.dart';
 import '../controllers/home_controller.dart';
@@ -14,10 +11,6 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
       body: SafeArea(
         child: ListView(
           children: [
@@ -25,8 +18,10 @@ class HomeView extends GetView<HomeController> {
               padding: EdgeInsets.all(4.0.wp),
               child: Text(
                 "My List",
-                style:
-                    TextStyle(fontSize: 24.0.sp, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 24.0.sp,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Obx(
@@ -36,13 +31,7 @@ class HomeView extends GetView<HomeController> {
                 physics: const ClampingScrollPhysics(),
                 children: [
                   ...controller.tasks
-                      .map((element) => LongPressDraggable(
-                      data: element,
-                      feedback: Opacity(
-                        opacity: 0.8,
-                        child: TaskCard(task: element),
-                      ),
-                      child: TaskCard(task: element)))
+                      .map((element) => TaskCard(task: element))
                       .toList(),
                   AddCard()
                 ],

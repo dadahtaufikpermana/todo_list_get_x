@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-
 import '../core/utils/extensions.dart';
 import '../data/models/task.dart';
 import '../modules/home/controllers/home_controller.dart';
