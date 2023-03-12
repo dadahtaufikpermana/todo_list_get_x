@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../data/models/task.dart';
@@ -6,6 +7,9 @@ import '../../../data/services/repository.dart';
 class HomeController extends GetxController {
   TaskRepository taskRepository;
   HomeController({required this.taskRepository});
+  final formKey = GlobalKey<FormState>();
+  final editCtrl = TextEditingController();
+  final chipIndex = 0.obs;
 
   final tasks = <Task>[].obs;
 
@@ -18,5 +22,17 @@ class HomeController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+
+  }
+  void changeChipIndex(int value) {
+    chipIndex.value = value;
+  }
+
+  bool addTask(Task task){
+    if(tasks.contains(task)) {
+      return false;
+    }
+    tasks.add(task);
+    return true;
   }
 }
