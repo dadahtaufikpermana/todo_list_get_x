@@ -23,7 +23,7 @@ class TaskProvider{
     return tasks;
   }
 
-  void writeTask(List<Task> tasks){
+  void writeTasks(List<Task> tasks){
     _storage.write(taskKey, jsonEncode(tasks));
   }
 }

@@ -1,23 +1,22 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
+import '../../../data/models/task.dart';
+import '../../../data/services/repository.dart';
 
-  final count = 0.obs;
+class HomeController extends GetxController {
+  TaskRepository taskRepository;
+  HomeController({required this.taskRepository});
+
+  final tasks = <Task>[].obs;
+
   @override
   void onInit() {
     super.onInit();
+    tasks.assignAll(taskRepository.readTask());
+    ever(tasks, (_) => taskRepository.writeTasks(tasks));
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
   @override
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

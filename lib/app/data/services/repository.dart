@@ -1,7 +1,8 @@
 import '../models/task.dart';
+import '../providers/task/provider.dart';
 
 class TaskRepository {
-  TaskRepository taskProvider;
+  TaskProvider taskProvider;
   TaskRepository({required this.taskProvider});
 
   List<Task>readTask() => taskProvider.readTask();
