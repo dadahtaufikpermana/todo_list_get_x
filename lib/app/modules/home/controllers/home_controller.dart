@@ -21,6 +21,8 @@ class HomeController extends GetxController {
   final doingTodos = <dynamic>[].obs;
   final doneTodos = <dynamic>[].obs;
 
+  final tabIndex = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -31,6 +33,10 @@ class HomeController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void changeTabIndex(int index){
+    tabIndex.value = index;
   }
 
   void changeChipIndex(int value) {
@@ -143,6 +149,30 @@ class HomeController extends GetxController {
     for (int i = 0; i < task.todos!.length; i++){
       if(task.todos![i]['done'] == true) {
         res += 1;
+      }
+    }
+    return res;
+  }
+
+  int getTotalTask(){
+    var res = 0;
+    for (int i = 0; i < tasks.length; i++){
+      if(tasks[i].todos != null){
+        res += tasks[i].todos!.length;
+      }
+    }
+    return res;
+  }
+
+  int getTotalDoneTask (){
+    var res = 0;
+    for(int i = 0; i < tasks.length; i++){
+      if (tasks[i].todos != null){
+        for (int j = 0; j < tasks[i].todos!.length; j++){
+          if (tasks[i].todos![j]['done'] == true){
+            res += 1;
+          }
+        }
       }
     }
     return res;
