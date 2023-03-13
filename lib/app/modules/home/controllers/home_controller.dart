@@ -35,7 +35,7 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  void changeTabIndex(int index){
+  void changeTabIndex(int index) {
     tabIndex.value = index;
   }
 
@@ -51,15 +51,15 @@ class HomeController extends GetxController {
     task.value = select;
   }
 
-  void changeTodos(List<dynamic> select){
+  void changeTodos(List<dynamic> select) {
     doingTodos.clear();
     doneTodos.clear();
-    for(int i = 0; i < select.length; i++){
+    for (int i = 0; i < select.length; i++) {
       var todo = select[i];
       var status = todo['done'];
       if (status == true) {
         doneTodos.add(todo);
-      }else{
+      } else {
         doingTodos.add(todo);
       }
     }
@@ -134,42 +134,42 @@ class HomeController extends GetxController {
   }
 
   void deleteDoneTodo(dynamic doneTodo) {
-    int index = doneTodos.indexWhere((element) =>
-        mapEquals<String, dynamic>(doneTodo, element));
+    int index = doneTodos
+        .indexWhere((element) => mapEquals<String, dynamic>(doneTodo, element));
     doneTodos.removeAt(index);
     doneTodos.refresh();
   }
 
-  bool isTodosEmpty (Task task){
+  bool isTodosEmpty(Task task) {
     return task.todos == null || task.todos!.isEmpty;
   }
 
-  int getDoneTodo(Task task){
+  int getDoneTodo(Task task) {
     var res = 0;
-    for (int i = 0; i < task.todos!.length; i++){
-      if(task.todos![i]['done'] == true) {
+    for (int i = 0; i < task.todos!.length; i++) {
+      if (task.todos![i]['done'] == true) {
         res += 1;
       }
     }
     return res;
   }
 
-  int getTotalTask(){
+  int getTotalTask() {
     var res = 0;
-    for (int i = 0; i < tasks.length; i++){
-      if(tasks[i].todos != null){
+    for (int i = 0; i < tasks.length; i++) {
+      if (tasks[i].todos != null) {
         res += tasks[i].todos!.length;
       }
     }
     return res;
   }
 
-  int getTotalDoneTask (){
+  int getTotalDoneTask() {
     var res = 0;
-    for(int i = 0; i < tasks.length; i++){
-      if (tasks[i].todos != null){
-        for (int j = 0; j < tasks[i].todos!.length; j++){
-          if (tasks[i].todos![j]['done'] == true){
+    for (int i = 0; i < tasks.length; i++) {
+      if (tasks[i].todos != null) {
+        for (int j = 0; j < tasks[i].todos!.length; j++) {
+          if (tasks[i].todos![j]['done'] == true) {
             res += 1;
           }
         }
