@@ -17,10 +17,6 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
       body: SafeArea(
         child: ListView(
           children: [
@@ -28,8 +24,10 @@ class HomeView extends GetView<HomeController> {
               padding: EdgeInsets.all(4.0.wp),
               child: Text(
                 "My List",
-                style:
-                    TextStyle(fontSize: 24.0.sp, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 24.0.sp,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Obx(

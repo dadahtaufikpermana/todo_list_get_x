@@ -5,6 +5,7 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../../core/utils/extensions.dart';
 import '../home/controllers/home_controller.dart';
 import '../widgets/doing_list.dart';
+import '../widgets/done_list.dart';
 
 class DetailPage extends StatelessWidget {
   final homeCtrl = Get.find<HomeController>();
@@ -141,6 +142,7 @@ class DetailPage extends StatelessWidget {
               ),
             ),
             DoingList(),
+            DoneList(),
           ],
         ),
       ),
